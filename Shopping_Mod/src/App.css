@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(lightgray, lightpink);
+    text-align: center;
+  }
+
+
+
+button {
+    padding: 12px 20px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background: #1e40af;
+    transform: scale(1.02);
+}

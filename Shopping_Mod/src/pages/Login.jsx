@@ -2,43 +2,61 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
-  const [form, setForm] = useState({ username: "", password: "" });
   const navigate = useNavigate();
+  const [form, setForm] = useState({ username: "", password: "" });
 
   const submit = (e) => {
     e.preventDefault();
 
-    axios.post("https://my-site-django-1.onrender.com/login/", form)
-      .then(res => {
-        toast.success("Login successful");
-        navigate("/");    
+    const formData = new FormData();
+    formData.append("username", form.username);
+    formData.append("password", form.password);
+
+    axios.post("https://my-site-django-1.onrender.com/login/", formData)
+      .then((res) => {
+        toast.success("Login successful!");
+
+        localStorage.setItem("user", res.data.username);
+
+        setTimeout(() => navigate("/"), 1000);
       })
-      .catch(err => {
-        toast.error("Failed to load");
-      });
+      .catch(() => toast.error("Invalid username or password"));
   };
 
+  const logout = () => {
+    localStorage.removeItem("user");
+    toast.info("Logged out");
+    navigate("/login");
+  };
+
+
   return (
-    <form onSubmit={submit} style={{ maxWidth: "400px", margin: "auto" , padding:"50px", border: "1px solid black", borderRadius: "5px" , marginTop: "50px"}}>
-      <h2>Login</h2>
+    <>
+      <ToastContainer />
+
+      <form onSubmit={submit}
+        style={{ maxWidth: "400px", margin: "auto", marginTop: "50px" , padding:"50px", border: "1px solid black", borderRadius: "5px"}}
+      >
+        <h2>Login</h2>
 
         <p>Username</p>
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={(e) => setForm({ ...form, username: e.target.value })}
-      /><br />
-      <p>Password</p>
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setForm({ ...form, password: e.target.value })}
-      /><br />
-      <p></p>
-      <button type="submit" style={{ padding: "10px 20px", backgroundColor: "blue", color: "white", border: "none", borderRadius: "5px" }} >Login</button>
-    </form>
+        <input type="text"
+          style={{ padding: "5px", marginBottom: "10px", width: "50%", borderRadius: "3px", border: "1px solid gray" }}
+          onChange={(e) => setForm({ ...form, username: e.target.value })}
+        /><br />
+
+        <p>Password</p>
+        <input type="password"
+          style={{ padding: "5px", marginBottom: "10px", width: "50%", borderRadius: "3px", border: "1px solid gray" }}
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+        /><br />
+
+        <button type="submit" style={{ padding: "10px", borderRadius: "5px", border: "1px solid gray", backgroundColor: "black", color: "white" }}>Login</button>
+        <button type="submit" onClick={logout()} style={{ padding: "10px", borderRadius: "5px", border: "1px solid gray", backgroundColor: "black", color: "white" }}>Logout</button>
+      </form>
+    </>
   );
 }

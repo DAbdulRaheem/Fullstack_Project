@@ -15,9 +15,25 @@ export default function Cart() {
     }
   
     return (
-      <div>
-        <h2>Your Cart</h2>
+<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 20px" }}>
+  <h2 style={{ margin: 0 }}>Your Cart</h2>
   
+  <button 
+    onClick={() => {
+      localStorage.removeItem("cart");
+      window.location.reload();
+    }} 
+    style={{ 
+      padding: "10px 20px", 
+      backgroundColor: "red", 
+      color: "white", 
+      border: "none", 
+      borderRadius: "5px", 
+      cursor: "pointer" 
+    }}
+  >
+    Clear Cart
+  </button>
         {cart.length === 0 && <p>No items in cart</p>}
   
         {cart.map((item, i) => (
@@ -25,9 +41,9 @@ export default function Cart() {
             <h3>{item.title}</h3>
             <p>{item.brand}</p>
             <img src={item.image_url} width="120" />
-            <button onClick={() => removeFromCart(i)}>Remove</button>
-
-            <button onClick={() => BuyNow()}>Buy Now</button>
+            <br />
+            <button onClick={() => removeFromCart(i)}>X</button>
+            <button onClick={() => BuyNow()}>Buy Now🛒</button>
           </div>
         ))}
       </div>
