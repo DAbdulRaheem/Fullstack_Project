@@ -71,7 +71,7 @@ export default function Home() {
             >
               <h3>{m.title}</h3>
               <p>{m.brand}</p>
-              <img src={m.image_url} width="120" alt={m.title} />
+              <img src={m.image_url} width="120px" height="150px"  alt={m.title} />
             </div>
 
             <button

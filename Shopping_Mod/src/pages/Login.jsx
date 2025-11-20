@@ -26,11 +26,11 @@ export default function Login() {
       .catch(() => toast.error("Invalid username or password"));
   };
 
-  const logout = () => {
-    localStorage.removeItem("user");
-    toast.info("Logged out");
-    navigate("/login");
-  };
+//   const logout = () => {
+//     localStorage.removeItem("user");
+//     toast.info("Logged out");
+//     navigate("/login");
+//   };
 
 
   return (
@@ -55,7 +55,7 @@ export default function Login() {
         /><br />
 
         <button type="submit" style={{ padding: "10px", borderRadius: "5px", border: "1px solid gray", backgroundColor: "black", color: "white" }}>Login</button>
-        <button type="submit" onClick={logout()} style={{ padding: "10px", borderRadius: "5px", border: "1px solid gray", backgroundColor: "black", color: "white" }}>Logout</button>
+        {/* <button type="submit" onClick={logout()} style={{ padding: "10px", borderRadius: "5px", border: "1px solid gray", backgroundColor: "black", color: "white" }}>Logout</button> */}
       </form>
     </>
   );
