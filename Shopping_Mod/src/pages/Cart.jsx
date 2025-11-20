@@ -15,7 +15,7 @@ export default function Cart() {
     }
   
     return (
-<div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px" }}>
+<div style={{ display: "flex", flexDirection:"column"}}>
   <h2 style={{ margin: 0 }}>Your Cart</h2>
   
   <button 
@@ -42,8 +42,8 @@ export default function Cart() {
             <p>{item.brand}</p>
             <img src={item.image_url} width="120" />
             <br />
-            <button onClick={() => removeFromCart(i)}>X</button>
-            <button onClick={() => BuyNow()}>Buy Now🛒</button>
+            <button onClick={() => removeFromCart(i)} style={{background:"red"}}>X</button>
+            <button onClick={() => BuyNow()} style={{background:"yellow",color:"black"}} >Buy Now_🛒</button>
           </div>
         ))}
       </div>
