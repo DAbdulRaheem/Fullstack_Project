@@ -15,7 +15,7 @@ export default function Cart() {
     }
   
     return (
-<div style={{ display: "flex", flexDirection:"column"}}>
+<div >
   <h2 style={{ margin: 0 }}>Your Cart</h2>
   
   <button 
