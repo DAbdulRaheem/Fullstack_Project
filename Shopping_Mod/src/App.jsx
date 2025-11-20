@@ -17,7 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="*" element={<><h2 style={{ textAlign: "center", marginTop: "50px" }}>404 Not Found</h2><img src="public/Gemini_Generated_Image_6pbpmd6pbpmd6pbp.jpeg" alt="404 Not Found" style={{ maxWidth: "50%", height: "auto", marginLeft:"25%" }} /></>}
+        <Route path="*" element={<><h2 style={{ textAlign: "center", marginTop: "50px" }}>404 Not Found</h2><img src="public/Gemini_Generated_Image_6pbpmd6pbpmd6pbp.jpeg" alt="404 Not Found" style={{ maxWidth: "50%", height: "auto" }} /></>}
         />
       </Routes>
     </BrowserRouter>

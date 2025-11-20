@@ -15,7 +15,7 @@ export default function Cart() {
     }
   
     return (
-<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 20px" }}>
+<div style={{ display: "flex", justifyContent: "space-between", padding: "0 20px" }}>
   <h2 style={{ margin: 0 }}>Your Cart</h2>
   
   <button 

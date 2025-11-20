@@ -43,33 +43,46 @@ export default function Home() {
 
       <h2>All Mobiles</h2>
 
-      {mobiles.map((m) => (
-        <div
-          key={m.id}
-          style={{
-            padding: "10px",
-            margin: "10px",
-            border: "1px solid black",
-            borderRadius: "5px",
-          }}
-        >
+      {/* Container for the Grid */}
+      <div 
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(5, 1fr)", // Creates 5 columns
+          gap: "20px", // Adds space between items
+        }}
+      >
+        {mobiles.map((m) => (
           <div
-            onClick={() => navigate(`/mobile/${m.id}`)}
-            style={{ cursor: "pointer" }}
+            key={m.id}
+            style={{
+              padding: "10px",
+              border: "1px solid black",
+              borderRadius: "5px",
+              display: "flex",           // Changed to flex for better internal alignment
+              flexDirection: "column",   // Stacks content vertically
+              justifyContent: "space-between", // Pushes button to bottom if needed
+              alignItems: "center",      // Centers content horizontally
+              textAlign: "center"
+            }}
           >
-            <h3>{m.title}</h3>
-            <p>{m.brand}</p>
-            <img src={m.image_url} width="120" />
-          </div>
+            <div
+              onClick={() => navigate(`/mobile/${m.id}`)}
+              style={{ cursor: "pointer" }}
+            >
+              <h3>{m.title}</h3>
+              <p>{m.brand}</p>
+              <img src={m.image_url} width="120" alt={m.title} />
+            </div>
 
-          <button
-            style={{ marginTop: "10px" }}
-            onClick={() => addToCart(m)}
-          >
-            Add to Cart
-          </button>
-        </div>
-      ))}
+            <button
+              style={{ marginTop: "10px" }}
+              onClick={() => addToCart(m)}
+            >
+              Add to Cart
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
