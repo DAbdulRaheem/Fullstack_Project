@@ -1,17 +1,30 @@
 /* Navbar.css */
 .navbar {
   display: flex;
-  justify-content: space-between; /* Pushes the two div groups apart */
+  /* You can keep space-between, or remove it if using margin-left: auto below. 
+     Keeping it is fine. */
+  justify-content: space-between; 
   align-items: center;
   background-color: #1e1e24;
   padding: 1rem 2rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.nav-links, .nav-auth {
+.nav-links {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+/* SEPARATED: This handles the Right Side positioning */
+.nav-auth {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  
+  /* *** THE FIX *** */
+  /* This pushes this container (and the register button) to the far right */
+  margin-left: auto; 
 }
 
 .nav-item {
