@@ -1,27 +1,34 @@
+import { useNavigate } from "react-router-dom";
+
+
 export default function Cart() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const navigate = useNavigate();
 
     const removeFromCart = (index) => {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.splice(index, 1); // remove item at index
-      localStorage.setItem("cart", JSON.stringify(cart));
-      window.location.reload(); // refresh to update UI
+      const currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
+      currentCart.splice(index, 1); // remove item at index
+      localStorage.setItem("cart", JSON.stringify(currentCart));
+      // navigate to home to reflect changes without forcing a full reload
+      
     };
-
+    
     const BuyNow = () => {
       alert("Thank you for your purchase!");
       localStorage.removeItem("cart");
       window.location.reload(); // refresh to update UI
+      
     }
-  
+    
     return (
-<div >
+      <div >
   <h2 style={{ margin: 0 }}>Your Cart</h2>
   
   <button 
     onClick={() => {
       localStorage.removeItem("cart");
-      window.location.reload();
+      setTimeout(() => navigate("/cart"), 1000);
+      // navigate("/")
     }} 
     style={{ 
       padding: "10px 20px", 
