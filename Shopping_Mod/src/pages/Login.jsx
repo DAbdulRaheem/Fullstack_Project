@@ -38,19 +38,23 @@ export default function Login() {
       <ToastContainer />
 
       <form onSubmit={submit}
-        style={{ maxWidth: "400px", margin: "auto", marginTop: "50px" , padding:"50px", border: "1px solid black", borderRadius: "5px"}}
+        style={{ maxWidth: "400px", margin: "auto", marginTop: "50px" , padding:"50px", border: "1px solid rgba(255, 255, 255, 0.5)", borderRadius: "16px",background: "rgba(255, 255, 255, 0.75",
+          color: "#333",backdropFilter: "blur(10px)",  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.15)"}}
       >
-        <h2>Login</h2>
+        <h1>Login</h1>
 
-        <p>Username</p>
+        <h2>Username</h2>
         <input type="text"
-          style={{ padding: "5px", marginBottom: "10px", width: "50%", borderRadius: "3px", border: "1px solid gray" }}
+          placeholder="Username"
+          style={{ padding: "15px", marginBottom: "10px", width: "50%",  border: "1px solid gray", borderRadius: "5px" }}
+          autoFocus
           onChange={(e) => setForm({ ...form, username: e.target.value })}
         /><br />
 
-        <p>Password</p>
+        <h2>Password</h2>
         <input type="password"
-          style={{ padding: "5px", marginBottom: "10px", width: "50%", borderRadius: "3px", border: "1px solid gray" }}
+          placeholder="Password"
+          style={{ padding: "15px", marginBottom: "10px", width: "50%", borderRadius: "5px", border: "1px solid gray" }}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         /><br />
 

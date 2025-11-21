@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     axios
       .get("https://my-site-django-1.onrender.com/mobiles/")
-      .then((res) => setMobiles(res.data))
+      .then((res) => setMobiles(res.data)) 
       .catch((err) => {
         console.log(err);
         toast.error("Failed to load mobiles");
@@ -58,10 +58,10 @@ export default function Home() {
               padding: "10px",
               border: "1px solid black",
               borderRadius: "5px",
-              display: "flex",           // Changed to flex for better internal alignment
-              flexDirection: "column",   // Stacks content vertically
-              justifyContent: "space-between", // Pushes button to bottom if needed
-              alignItems: "center",      // Centers content horizontally
+              display: "flex",                  
+              flexDirection: "column",          
+              justifyContent: "space-between",  
+              alignItems: "center",             
               textAlign: "center"
             }}
           >
