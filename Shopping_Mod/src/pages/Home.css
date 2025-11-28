@@ -1,0 +1,110 @@
+/* Home.css */
+
+/* Main Container */
+.home-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Grid Layout */
+.mobile-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Default: 5 columns */
+  gap: 20px;
+}
+
+/* Card Styling */
+.mobile-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.mobile-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Clickable Area */
+.card-content {
+  cursor: pointer;
+  width: 100%;
+}
+
+.card-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.card-content p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.product-image {
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Button Styling */
+.add-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.add-btn:hover {
+  background-color: #0056b3;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* Laptops (max-width: 1200px) -> 4 Columns */
+@media (max-width: 1200px) {
+  .mobile-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tablets (max-width: 992px) -> 3 Columns */
+@media (max-width: 992px) {
+  .mobile-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large Mobile (max-width: 768px) -> 2 Columns */
+@media (max-width: 768px) {
+  .mobile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small Mobile (max-width: 480px) -> 1 Column */
+@media (max-width: 480px) {
+  .mobile-grid {
+    grid-template-columns: 1fr;
+  }
+}

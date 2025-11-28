@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import './Login'
+import './Login'; 
+import './Home.css'; // Import the new CSS file here
 
 export default function Home() {
   const [mobiles, setMobiles] = useState([]);
@@ -11,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     axios
       .get("https://my-site-django-1.onrender.com/mobiles/")
-      .then((res) => setMobiles(res.data)) 
+      .then((res) => setMobiles(res.data))
       .catch((err) => {
         console.log(err);
         toast.error("Failed to load mobiles");
@@ -20,12 +21,11 @@ export default function Home() {
 
   // Add to Cart with Toastify
   const addToCart = (mobile) => {
-
     // check login
     const user = localStorage.getItem("user");
     if (!user) {
       toast.warn("You must login first!");
-      navigate("/login");   // redirect to login page
+      navigate("/login"); 
       return;
     }
 
@@ -38,48 +38,37 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <ToastContainer />   {/* Required for Toastify */}
+    <div className="home-container">
+      <ToastContainer />
 
-      <h2>All Mobiles</h2>
+      <h2 className="page-title">All Mobiles</h2>
 
-      {/* Container for the Grid */}
-      <div 
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)", // Creates 5 columns
-          gap: "20px", // Adds space between items
-        }}
-      >
+      <div className="mobile-grid">
         {mobiles.map((m) => (
-          <div
-            key={m.id}
-            style={{
-              padding: "10px",
-              border: "1px solid black",
-              borderRadius: "5px",
-              display: "flex",                  
-              flexDirection: "column",          
-              justifyContent: "space-between",  
-              alignItems: "center",             
-              textAlign: "center"
-            }}
-          >
+          <div key={m.id} className="mobile-card">
+            
             <div
+              className="card-content"
               onClick={() => navigate(`/mobile/${m.id}`)}
-              style={{ cursor: "pointer" }}
             >
               <h3>{m.title}</h3>
               <p>{m.brand}</p>
-              <img src={m.image_url} width="120px" height="150px"  alt={m.title} />
+              <img 
+                src={m.image_url} 
+                alt={m.title} 
+                className="product-image"
+                width="120px" 
+                height="150px" 
+              />
             </div>
 
             <button
-              style={{ marginTop: "10px" }}
+              className="add-btn"
               onClick={() => addToCart(m)}
             >
               Add to Cart
             </button>
+
           </div>
         ))}
       </div>
