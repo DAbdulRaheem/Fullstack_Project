@@ -20,7 +20,7 @@
     max-width: 900px;
     width: 100%;
     /* background: #ffffff; */
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    background: linear-gradient(to right,  #feb47b, #ff7e5f);
     align-items: center;
   }
   
